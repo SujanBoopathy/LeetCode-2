@@ -1,5 +1,5 @@
 class Solution {
-    public int reverseInteger(int i){
+    public int  reverseInteger(int i){
         int rev=0;
         while(i>0){
             rev=(rev*10)+(i%10);
@@ -8,16 +8,13 @@ class Solution {
         return rev;
     }
     public int countDistinctIntegers(int[] nums) {
-        List<Integer> result=new ArrayList<>();
+        Set<Integer> set=new HashSet<>();
         for(int i:nums){
-            if(!result.contains(i)){
-                result.add(i);
-            }
-            int temp=reverseInteger(i);
-            if(!result.contains(temp)){
-                result.add(temp);
-            }
+            set.add(i);
         }
-        return result.size();
+        for(int i:nums){
+            set.add(reverseInteger(i));
+        }
+        return set.size();
     }
 }
